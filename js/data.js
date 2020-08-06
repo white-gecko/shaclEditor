@@ -189,9 +189,8 @@ function loadNodes(txtTriples) {
             nodes.set(objShacl.getClassName(), objShacl);
         }*/
     }
-    
+
     const modal = document.getElementById("divLoadProject");
     modal.style.display = "none";
     return (nodes.size > 0);
 }
-

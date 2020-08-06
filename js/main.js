@@ -589,7 +589,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			}
 		}
 	}
-	
+
 	function showDiv(div) {
 		var modal = document.getElementById(div);
 		modal.style.display = "block";
@@ -799,7 +799,7 @@ function updateEdges() {
 		var modal = document.getElementById("addDiv");
 	  	modal.style.display = "none";
 	}
-	
+
 	// When the user clicks on <span> (x), close the modal
 	function spanClick(div) {
 		var modal = document.getElementById(div);
@@ -935,7 +935,7 @@ function updateEdges() {
 	function addShacl(){
 		var pos = origShacl.position;
 		var orig = origShacl;
-		
+
 		var className = document.getElementById("txtShClassName").value;
 		//var targetClass = orig.id();
 		var targetClass = orig.id();
@@ -948,7 +948,7 @@ function updateEdges() {
 		var modal = document.getElementById("addShDiv");
 	  	modal.style.display = "none";
 	}
-	
+
 	function makeValidation(){
 		let validator = new SHACLValidator();
         validate();

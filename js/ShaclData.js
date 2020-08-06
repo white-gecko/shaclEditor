@@ -1,6 +1,6 @@
-class ShaclData { 
+class ShaclData {
 
-	constructor(className, targetClass) 
+	constructor(className, targetClass)
 	{
 		this.id = systemId;
 		this.className = className;
@@ -51,7 +51,7 @@ class ShaclData {
 	setPropertyValues(property, value){
 		this.properties.get(property).push(value);
 	}
-	
+
 	getShaclLines(){
 		var lines = [];
 
@@ -66,15 +66,15 @@ class ShaclData {
 
 		const get_keys = this.properties.keys();
 		for (const prop of get_keys)
-		{ 
+		{
 			lines.push("<http://www.w3.org/ns/shacl#property> [");
 			const get_values = this.properties.get(prop);
 			for (const value of get_values){
 				lines.push(value);
-			}  
+			}
 			lines.push(" ] ;");
 		}
-		
+
 		return lines;
 	}
 
@@ -114,8 +114,8 @@ class ShaclData {
 	printText(){
 		var res = "";
 		var lines = this.getShaclLines();
-		for (var line of lines) 
-		{ 
+		for (var line of lines)
+		{
 			res += "\n" + line;
 		}
 		res = res.trim().substring(0, res.length-2) + ".";
