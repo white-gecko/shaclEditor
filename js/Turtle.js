@@ -60,19 +60,20 @@ class Turtle {
 		{
 			lines.push("@prefix " + name + ": <" + this.prefixes.get(name) + "> .");
 		}
-		lines.push("<" + this.className + ">" + " <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>  <http://www.w3.org/2000/01/rdf-schema#Class> . ");
-		lines.push("<" + this.className + ">" + " <http://www.w3.org/1999/02/22-rdf-syntax-ns#label>  \""+getURLName(this.className)+"\" . ");
+
+		lines.push("<" + this.className + ">" + " rdf:type rdfs:Class . ");
+		lines.push("<" + this.className + ">" + " rdfs:label  \""+getURLName(this.className)+"\" . ");
 
 		if((this.extendClass != undefined) && (this.extendClass != null)) {
 			if (this.extendClass.length > 0) {
-				lines.push("<" + this.className + ">" + " <http://www.w3.org/1999/02/22-rdf-syntax-ns#subClassOf>  <"+this.extendClass+"> . ");
+				lines.push("<" + this.className + ">" + " rdfs:subClassOf  <"+this.extendClass+"> . ");
 			}
 		}
 
 		const get_keys = this.properties.keys();
 		for (const prop of get_keys)
 		{
-			lines.push("<" + prop + "> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> ; <http://www.w3.org/1999/02/22-rdf-syntax-ns#label>  \""+getURLName(prop)+"\" .");
+			lines.push("<" + prop + "> rdf:type rdf:Property ; rdfs:label  \""+getURLName(prop)+"\" .");
 			lines.push("<"+this.className+"> <http://shacleditor/hasProperty> <"+prop+"> .");
 			if((this.properties.get(prop) != undefined) && (this.properties.get(prop) != null)) {
                 if (this.properties.get(prop).length > 0) {
@@ -94,19 +95,19 @@ class Turtle {
 		}
 		lines.push("insert data { graph <http://shacleditor#"+ this.getId() +"> { ");
 
-		lines.push("<" + this.className + ">" + " <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>  <http://www.w3.org/2000/01/rdf-schema#Class> . ");
-		lines.push("<" + this.className + ">" + " <http://www.w3.org/1999/02/22-rdf-syntax-ns#label>  \""+getURLName(this.className)+"\" . ");
+		lines.push("<" + this.className + ">" + " rdf:type rdfs:Class . ");
+		lines.push("<" + this.className + ">" + " rdfs:label \""+getURLName(this.className)+"\" . ");
 
 		if((this.extendClass != undefined) && (this.extendClass != null)) {
 			if (this.extendClass.length > 0) {
-				lines.push("<" + this.className + ">" + " <http://www.w3.org/1999/02/22-rdf-syntax-ns#subClassOf>  <"+this.extendClass+"> . ");
+				lines.push("<" + this.className + ">" + " rdfs:subClassOf <"+this.extendClass+"> . ");
 			}
 		}
 
 		const get_keys = this.properties.keys();
 		for (const prop of get_keys)
 		{
-			lines.push("<" + prop + "> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> ; <http://www.w3.org/1999/02/22-rdf-syntax-ns#label>  \""+getURLName(prop)+"\" .");
+			lines.push("<" + prop + "> rdf:type rdf:Property ; rdfs:label  \""+getURLName(prop)+"\" .");
 			lines.push("<"+this.className+"> <http://shacleditor/hasProperty> <"+prop+"> .");
 			console.log(this.properties.get(prop));
 			if((this.properties.get(prop) != undefined) && (this.properties.get(prop) != null)) {
